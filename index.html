@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Lesson 3</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <button class="btn btn-primary" v-on:click="tableVisibility">
+            <span v-tooltip="tooltipHide">{{ showText }}</span>
+        </button>
+
+        <table v-if="tableIsShown"  class="table table_blur">
+            <caption>{{ title }}</caption>
+            <tr>
+              <th>#</th>
+              <th>Avatar</th>
+              <th>Firstname</th>
+              <th>Secondname</th>
+              <th>Thirdname</th>
+            </tr>
+            <tr v-for="(user, index) in users" v-bind:key="user.id">
+              <td>{{ index + 1 }}</td>
+              <td><img v-bind:src="user.avatar || defaultAvatar" v-bind:alt="fullName(user) || 'Заглушка' " /></td>
+              <td>{{ user.firstName | capitalize }} <button class="btn btn-info"  v-copy="user.firstName">Copy!</button></td>
+              <td>{{ user.secondName | capitalize }}</td>
+              <td>{{ user.thirdName | capitalize }}</td>
+            </tr>
+          </table>
+    </div>
+       
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/v-tooltip"></script>
+    <script src="https://unpkg.com/v-copy@0.1.0/dist/v-copy.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
