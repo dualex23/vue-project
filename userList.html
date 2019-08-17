@@ -13,9 +13,8 @@
 <body>
     <div id="app" v-cloak>
         <user-list 
-          v-bind:list="users" 
-          v-bind:title="showTitle"
-          v-bind:capitalized="capitalize"
+          v-bind:list="users"
+          v-bind:ava="defaultAvatar"
         ></user-list>
     </div>
 
@@ -25,7 +24,7 @@
         <h3>User List Component</h3>
         
         <table class="table table_blur">
-            <caption>{{ title }}</caption>
+            <caption>{{ showTitle }}</caption>
             <tr>
               <th>#</th>
               <th>Avatar</th>
@@ -35,10 +34,10 @@
             </tr>
             <tr v-for="(user, index) in list" v-bind:key="user.id">
               <td>{{ index + 1 }}</td>
-              <td><img v-bind:src="user.avatar || defaultAvatar" v-bind:alt="fullName(user) || 'Заглушка' " /></td>
-              <td>{{ user.firstName | capitalized }} <button class="btn btn-info"  v-copy="user.firstName">Copy!</button></td>
-              <td>{{ user.secondName | capitalized }}</td>
-              <td>{{ user.thirdName | capitalized }}</td>
+              <td><img v-bind:src="user.avatar || ava" v-bind:alt="fullName(user) || 'Заглушка' " /></td>
+              <td>{{ user.firstName | capitalize }}</td>
+              <td>{{ user.secondName | capitalize }}</td>
+              <td>{{ user.thirdName | capitalize }}</td>
             </tr>
         </table>
 

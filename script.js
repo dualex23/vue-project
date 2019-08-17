@@ -44,13 +44,26 @@ var UserList = {
             type: Array,
             required: true
         },
-        title: {
+        ava: {
             type: String,
             required: true
-        },
-        capitalized: {
-            type: Function,
-            required: true
+        }
+    },
+    computed: {
+        showTitle: function(){
+            return 'Всего человек: ' + ' ' + this.list.length;
+        }
+    },
+    filters: {
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString()
+            return value.charAt(0).toUpperCase() + value.slice(1)
+        }
+    },
+    methods: {
+        fullName: function(user) {
+            return user.firstName + ' ' + user.secondName;
         }
     }
 }
@@ -65,33 +78,12 @@ var app = new Vue({
     },
     data: function(){
         return {
-            tableIsShown: true,
-            invisText: '',
-            tooltipHide: 'Скрыть список',
-            tooltipShow: 'Показать список',
             users: [],
             defaultAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaUD8jlvVjouynDln66CRBRL-ecagVV5I3xhRBXJweSU_1iyYLTw'
         }
     },
-    computed: {
-        showTitle: function(){
-            return 'Всего человек: ' + ' ' + this.users.length;
-        }
-    },
-    filters: {
-        capitalize: function (value) {
-            if (!value) return ''
-            value = value.toString()
-            return value.charAt(0).toUpperCase() + value.slice(1)
-        }
-    },
     mounted: function() {
         return this.users = users;
-    },
-    methods: {
-        fullName: function(user) {
-            return user.firstName + ' ' + user.secondName;
-        }
     }
     
 });
