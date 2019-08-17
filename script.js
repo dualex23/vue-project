@@ -83,6 +83,7 @@ var app = new Vue({
         }
     },
     mounted: function() {
+        console.log('Данные подгружены');
         return this.users = users;
     }
     
