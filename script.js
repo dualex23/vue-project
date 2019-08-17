@@ -37,11 +37,35 @@ var users = [
     }
 ];
 
+var UserList = {
+    template: '#userlist',
+    props: {
+        list: {
+            type: Array,
+            required: true
+        },
+        title: {
+            type: String,
+            required: true
+        },
+        capitalized: {
+            type: Function,
+            required: true
+        }
+    }
+}
+
+// ================
+
+
 var app = new Vue({
     el: '#app',
+    components: {
+        'user-list': UserList
+    },
     data: function(){
         return {
-            tableIsShown: false,
+            tableIsShown: true,
             invisText: '',
             tooltipHide: 'Скрыть список',
             tooltipShow: 'Показать список',
@@ -50,11 +74,8 @@ var app = new Vue({
         }
     },
     computed: {
-        showText: function() {
-            return this.tableIsShown ? 'Скрыть' : 'Показать';
-        },
-        title: function(){
-            return 'Всего человек: ' + this.users.length;
+        showTitle: function(){
+            return 'Всего человек: ' + ' ' + this.users.length;
         }
     },
     filters: {
@@ -68,9 +89,6 @@ var app = new Vue({
         return this.users = users;
     },
     methods: {
-        tableVisibility: function() {
-            return this.tableIsShown = !this.tableIsShown;
-        },
         fullName: function(user) {
             return user.firstName + ' ' + user.secondName;
         }
