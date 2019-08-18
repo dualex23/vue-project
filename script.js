@@ -37,6 +37,18 @@ var users = [
     }
 ];
 
+// ============== Components =================
+
+var UserForm = {
+    template: '#userform',
+    props: {
+        list: {
+            type: Array,
+            required: true
+        }
+    }
+};
+
 var UserList = {
     template: '#userlist',
     props: {
@@ -66,7 +78,7 @@ var UserList = {
             return user.firstName + ' ' + user.secondName;
         }
     }
-}
+};
 
 // ================
 
@@ -74,7 +86,8 @@ var UserList = {
 var app = new Vue({
     el: '#app',
     components: {
-        'user-list': UserList
+        'user-list': UserList,
+        'user-form': UserForm
     },
     data: function(){
         return {
