@@ -2,8 +2,8 @@
 var UserForm = {
     template: '#userform',
     props: {
-        list: {
-            type: Array,
+        person: {
+            type: Object,
             required: true
         }
     },
@@ -27,8 +27,7 @@ var app = new Vue({
     },
     data: function(){
         return {
-            users: [],
-            defaultAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaUD8jlvVjouynDln66CRBRL-ecagVV5I3xhRBXJweSU_1iyYLTw'
+            users: []
         }
     },
     mounted: function() {
