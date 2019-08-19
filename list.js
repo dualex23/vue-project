@@ -4,50 +4,40 @@ var users = [
         id: 0,
         firstName: "Александр",
         secondName: "Македонский",
-        thirdName: "Цезаревич",
+        middleName: "Цезаревич",
         avatar: "http://nice-avatar.ucoz.ru/_ph/4/2/933339845.png"
     },
     {
         id: 1,
         firstName: "Максим",
         secondName: "Авросский",
-        thirdName: "Наимович",
+        middleName: "Наимович",
         avatar: ""
     },
     {
         id: 2,
         firstName: "Платон",
         secondName: "Планетный",
-        thirdName: "Меркурович",
+        middleName: "Меркурович",
         avatar: "https://s017.radikal.ru/i427/1303/35/85bea17b0018.gif"
     },
     {
         id: 3,
         firstName: "Карл",
         secondName: "Фиджеральд",
-        thirdName: "Карлович",
+        middleName: "Карлович",
         avatar: ""
     },
     {
         id: 4,
         firstName: "Морис",
         secondName: "Бирюза",
-        thirdName: "Агапович",
+        middleName: "Агапович",
         avatar: ""
     }
 ];
 
 // ============== Components =================
-
-var UserForm = {
-    template: '#userform',
-    props: {
-        list: {
-            type: Array,
-            required: true
-        }
-    }
-};
 
 var UserList = {
     template: '#userlist',
@@ -56,7 +46,7 @@ var UserList = {
             type: Array,
             required: true
         },
-        ava: {
+        defaultuseravatar: {
             type: String,
             required: true
         }
@@ -86,8 +76,7 @@ var UserList = {
 var app = new Vue({
     el: '#app',
     components: {
-        'user-list': UserList,
-        'user-form': UserForm
+        'user-list': UserList
     },
     data: function(){
         return {

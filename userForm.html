@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div id="app" v-cloak>
-        <user-form 
-            v-bind:list="users"
-        ></user-form>
+        <user-form></user-form>
     </div>
 
     <template id="userform">
@@ -22,15 +21,22 @@
         
         <h3>User Form Component</h3>
 
-        <ul>
-            <li>{{ list[0] }}</li>
-        </ul>
+        <form>
+            
+            <div class="input-group mb-3" v-for="(key, value) in user">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">{{value}}</span>
+                </div>
+                <input type="text" class="form-control" placeholder="id" aria-label="id" aria-describedby="basic-addon1" v-bind:value="key">
+            </div>
+
+        </form>
 
       </div>
     </template>
        
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    <script src="script.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>
